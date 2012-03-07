@@ -1,24 +1,9 @@
 # 
 # Makefile for libpurple-examples
 # 
-# Default variables. Overwrite them to fit your needs.
-# Define VERBOSE=1 to have a more verbose compile.
-#
-
 # set extra flags if needed
-CFLAGS   = -g
-LDFLAGS  = 
-
-# end of customization
-CFLAGS  += $(shell pkg-config --cflags purple)
-LDFLAGS += $(shell pkg-config --libs purple gthread-2.0)
-
-ifndef VERBOSE
-	QUIET_CC       = @echo '   ' CC $@;
-	QUIET_CXX      = @echo '   ' CXX $@;
-	QUIET_AR       = @echo '   ' AR $@;
-	QUIET_LINK     = @echo '   ' LINK $@;
-endif
+CFLAGS  = -g $(shell pkg-config --cflags purple)
+LDFLAGS = $(shell pkg-config --libs purple gthread-2.0)
 
 all: buddy_status
 
